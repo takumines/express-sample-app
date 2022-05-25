@@ -1,5 +1,5 @@
 import express, { NextFunction, Request, Response } from 'express';
-import todoRoute from './router/todos';
+import todoRoute from './routes/todos';
 
 const app = express();
 
