@@ -1,4 +1,4 @@
-# express-ts-todo-app
+# express-sample-app
 
 ### Set Up
 ```
