@@ -1,4 +1,4 @@
-import ItemRepositoryImpl from "../domain/repositories/item_repository_impl";
+import ItemRepositoryImpl from "../../domain/repositories/item_repository_impl";
 
 class ItemService {
   async findAll() {

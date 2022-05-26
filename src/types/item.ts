@@ -6,7 +6,7 @@ export interface BaseItem {
 }
 
 export interface Item extends BaseItem {
-  id: number;
+  id: string;
 }
 
 export interface Items {

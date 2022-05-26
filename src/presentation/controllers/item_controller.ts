@@ -1,5 +1,5 @@
 import {Request, RequestHandler, Response} from "express";
-import ItemService from "../../services/item_service";
+import ItemService from "../../application/services/item_service";
 import {Item} from "../../types/item";
 
 export const index: RequestHandler = async (_req: Request, res: Response) => {
