@@ -1,4 +1,4 @@
-import {Item} from "../../types/item";
+import {Item} from "../item/item";
 
 export interface ItemRepository {
   findAll(): Promise<Item[]>;

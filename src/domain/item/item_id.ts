@@ -1,4 +1,4 @@
-import UUID from "uuid";
+import { v4 } from 'uuid';
 
 export class ItemId {
   private readonly _value: string;
@@ -8,7 +8,9 @@ export class ItemId {
   }
 
   static generate() {
-    return new ItemId( UUID.v4());
+    const id = v4();
+    console.log(id);
+    return new ItemId(id);
   }
 
   get() {
