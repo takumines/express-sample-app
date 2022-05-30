@@ -3,6 +3,7 @@ import {ItemName} from "../item/item_name";
 import {ItemPrice} from "../item/item_price";
 import {ItemDescription} from "../item/item_description";
 import {ItemImage} from "../item/item_image";
+import {Items, Item as ItemType} from "../../types/item"
 
 const itemsFromDB = [
   {
@@ -19,32 +20,31 @@ const itemsFromDB = [
   }
 ]
 
+const itemData = itemsFromDB.map(({name, price, description, image}) => (
+  new Item(
+    new ItemName(name),
+    new ItemPrice(price),
+    new ItemDescription(description),
+    new ItemImage(image)
+  )
+));
+
 class ItemRepositoryImpl {
-  async findAll(): Promise<Item[]> {
-    const item = new Item(
-      new ItemName('test'),
-      new ItemPrice(2000),
-      new ItemDescription('Tasty'),
-      new ItemImage("https://cdn.auth0.com/blog/whatabyte/burger-sm.png")
-    )
-    return itemsFromDB.map(({name, price, description, image}) => (
-      new Item(
-        new ItemName(name),
-        new ItemPrice(price),
-        new ItemDescription(description),
-        new ItemImage(image)
-      )
-    ));
+  async findAll(): Promise<Items> {
+
+    return itemData.map((item) => {
+      return {
+        id: item.id().get(),
+        name: item.name().get(),
+        price: item.price().get(),
+        description: item.description().get(),
+        image: item.image().get()
+      }
+    })
   }
 
   async find(id: number): Promise<Item> {
-    console.log(id);
-    return new Item(
-      new ItemName('test'),
-      new ItemPrice(2000),
-      new ItemDescription('Tasty'),
-      new ItemImage("https://cdn.auth0.com/blog/whatabyte/burger-sm.png")
-    );
+    return itemData[id]
   }
 }
 
