@@ -30,9 +30,9 @@ const itemData = itemsFromDB.map(({name, price, description, image}) => (
 ));
 
 class ItemRepositoryImpl {
-  async findAll(): Promise<Items> {
+  async findAll(): Promise<ItemType[]> {
 
-    return itemData.map((item) => {
+    return itemData.map((item: Item) => {
       return {
         id: item.id().get(),
         name: item.name().get(),
@@ -43,8 +43,18 @@ class ItemRepositoryImpl {
     })
   }
 
-  async find(id: number): Promise<Item> {
-    return itemData[id]
+  async find(id: string): Promise<ItemType> {
+    const item = itemData.filter((item: Item) => {
+      return item.id().get() === id
+    })[0]
+
+    return {
+      id: item.id().get(),
+      name: item.name().get(),
+      price: item.price().get(),
+      description: item.description().get(),
+      image: item.image().get()
+    }
   }
 }
 

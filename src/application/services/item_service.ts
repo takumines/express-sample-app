@@ -5,7 +5,7 @@ class ItemService {
     return ItemRepositoryImpl.findAll();
   }
 
-  async find(id: number) {
+  async find(id: string) {
     return ItemRepositoryImpl.find(id);
   }
 }

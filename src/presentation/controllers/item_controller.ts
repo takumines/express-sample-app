@@ -1,6 +1,6 @@
 import {Request, RequestHandler, Response} from "express";
 import ItemService from "../../application/services/item_service";
-import { Item } from "../../domain/item/item";
+import { Item } from "../../types/item";
 
 export const index: RequestHandler = async (_req: Request, res: Response) => {
   try {
@@ -19,7 +19,7 @@ export const index: RequestHandler = async (_req: Request, res: Response) => {
 
 export const show: RequestHandler<{id: string}> = async (req: Request, res: Response) => {
   try {
-    const id = +req.params.id;
+    const id = req.params.id;
     const item: Item = await ItemService.find(id);
 
     res.status(200).json({
